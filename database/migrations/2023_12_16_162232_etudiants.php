@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('etudiants', function (Blueprint $table) {
-            $table->integer('NCE')->primary()->nullable();
+            $table->bigIncrements('id')->primary();
+            $table->integer('NCE')->primary()->unique();
             $table->string('nom');
             $table->string('prenom');
             $table->string('classe');

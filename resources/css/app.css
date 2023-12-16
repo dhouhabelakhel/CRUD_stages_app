@@ -1,0 +1,134 @@
+.custom-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #eff7ff; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    padding: 2rem;
+}
+
+.custom-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555; 
+}
+
+.custom-form input[type="text"],
+.custom-form select,
+.custom-form input[type="date"],
+.custom-form input[type="reset"],
+
+.custom-form input[type="number"],
+.custom-form input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.custom-form input[type="submit"] {
+    background-color: #f1c40f; 
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-form input[type="submit"]:hover {
+    background-color: #d4ac0d; 
+}
+.animated-heading {
+    text-align: center;
+    color: #3498db; 
+    font-size: 2em;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 2rem;
+}
+
+.animated-heading::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #f1c40f;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.animated-heading:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.styled-table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.styled-table td, .styled-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table a {
+    color: #e67e22;
+    text-decoration: none;
+}
+.no-found {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.no-found h1 {
+    color: #3498db;
+    font-size: 24px;
+}
+
+.styled-link {
+    color: white; 
+    text-decoration: none; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    background-color: #3498db; 
+    display: inline-block;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.message {
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+}
+
+img {
+    max-width: 200px; 
+}

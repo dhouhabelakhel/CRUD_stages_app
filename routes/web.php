@@ -16,5 +16,9 @@ use App\Http\Controllers\etudiantcontroller;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/listEtudiant',[etudiantcontroller::class,'listEtudiant'])->name('students');
+
 Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add student');
 Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
+Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
+Route::put('/modifier/{etudiant}',[etudiant::class,'modifier'])->name('updateE');
