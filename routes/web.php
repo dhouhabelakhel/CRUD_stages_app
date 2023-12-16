@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+use App\Http\Controllers\etudiantcontroller;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add student');
+Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
