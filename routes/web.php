@@ -22,3 +22,4 @@ Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add s
 Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
 Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
 Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
+Route::delete('/delete/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');

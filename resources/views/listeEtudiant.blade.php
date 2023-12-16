@@ -62,7 +62,13 @@
 <td>{{$e->NCE}}</td>
 <td>{{$e->nom}}</td><td>{{$e->prenom}}</td><td>{{$e->classe}}</td>
 <td><a href="{{route('update',['etudiant'=>$e])}}">modifier</a></td>
-<td><a href="">supprimer</a></td></tr>
+<td><form action="{{route('delete',['etudiant'=>$e])}}" method="post">
+    @csrf
+    @method('delete')
+    <a ><input type="submit" value="supprimer"></a>
+</form>
+
+</td></tr>
 
 @endforeach
 @else 

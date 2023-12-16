@@ -34,15 +34,25 @@ class etudiantcontroller extends Controller
    public function update_view(etudiant $etudiant){
     return view('modifierEtudian',['e'=>$etudiant]);
    }
-  public function modifier(etudiant $etudiant,Request $request){
-    $data=$request->validate([
-    'NCE'=>'required',
-    'nom'=>'required',
-    'prenom'=>'required',
-    'classe'=>'required'
-    ]);
-    $etudiant->update($data);
-    echo"<script>alert('modification avec succes!')</script>";
-    return redirect(route('listeEtudiant'));
+   public function modifier(etudiant $etudiant, Request $request)
+   {
+       $data = $request->validate([
+           'NCE' => 'required',
+           'nom' => 'required',
+           'prenom' => 'required',
+           'classe' => 'required'
+       ]);
+   
+       $etudiant->update($data);
+   
+       session()->flash('success', 'Modification réussie!');
+   
+       return redirect()->route('students');
+   }
+  public function supprimer(etudiant $etudiant){
+$etudiant->delete();
+return redirect()->route('students');
+
   }
+   
 }

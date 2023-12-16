@@ -6,11 +6,12 @@
 <form action="{{route('updateE',['etudiant'=>$e])}}" method="post" >
    @csrf 
    @method('put')
-    <input type="text" value="{{$e->NCE}}">
-    <input type="text" value="{{$e->nom}}">
-    <input type="text" value="{{$e->prenom}}">
-    <input type="text" value="{{$e->classe}}">
+    <input type="text" value="{{$e->NCE}}" name="NCE">
+    <input type="text" value="{{$e->nom}}" name="nom">
+    <input type="text" value="{{$e->prenom}}" name="prenom">
+    <input type="text" value="{{$e->classe}}" name="classe">
 <input type="submit" value="modifier">
+<input type="reset" value="annuler">
 </form>
 
 @else 
