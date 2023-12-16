@@ -3,9 +3,9 @@
 
 @if($e)
 
-<form action="{{route('updateE',['etudiant'=>$e])}}" method="post">
+<form action="{{route('updateE',['etudiant'=>$e])}}" method="post" >
    @csrf 
-   @method('post')
+   @method('put')
     <input type="text" value="{{$e->NCE}}">
     <input type="text" value="{{$e->nom}}">
     <input type="text" value="{{$e->prenom}}">

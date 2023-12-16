@@ -36,13 +36,13 @@ class etudiantcontroller extends Controller
    }
   public function modifier(etudiant $etudiant,Request $request){
     $data=$request->validate([
-        'NCE'=>'required',
+    'NCE'=>'required',
     'nom'=>'required',
     'prenom'=>'required',
     'classe'=>'required'
     ]);
     $etudiant->update($data);
-    echo"<script><alert>modification avec succes!</alert></script>";
+    echo"<script>alert('modification avec succes!')</script>";
     return redirect(route('listeEtudiant'));
   }
 }

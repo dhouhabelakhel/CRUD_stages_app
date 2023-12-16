@@ -21,4 +21,4 @@ Route::get('/listEtudiant',[etudiantcontroller::class,'listEtudiant'])->name('st
 Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add student');
 Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
 Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
-Route::put('/modifier/{etudiant}',[etudiant::class,'modifier'])->name('updateE');
+Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
