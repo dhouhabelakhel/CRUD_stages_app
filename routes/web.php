@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\etudiantcontroller;
+use App\Http\Controllers\enseignantController;
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/listEtudiant',[etudiantcontroller::class,'listEtudiant'])->name('students');
-
 Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add student');
 Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
 Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
 Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
 Route::delete('/delete/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');
+Route::get('/ajouterEnsg',[enseignantController::class,'ouvrirAjoutEnsg'])->name('addEnsg');
+Route::post('/ajoutEnsg',[enseignantController::class,'ajouter'])->name('ajouterEnsg');

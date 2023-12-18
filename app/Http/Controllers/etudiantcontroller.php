@@ -26,8 +26,11 @@ class etudiantcontroller extends Controller
         'classe'=>'required'
         ]);
         $nouvEtudiant=etudiant::create($data);
-        if($nouvEtudiant)
-        echo"Ajout avec succes!";
+        if($nouvEtudiant){
+            echo"Ajout avec succes!";
+return redirect()->route('students');
+        }
+
     else echo"ajout non efectuer!!";
     }
 
