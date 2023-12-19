@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\etudiantcontroller;
 use App\Http\Controllers\enseignantController;
+use App\Http\Controllers\soutenanceController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,4 +25,6 @@ Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->nam
 Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
 Route::delete('/delete/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');
 Route::get('/ajouterEnsg',[enseignantController::class,'ouvrirAjoutEnsg'])->name('addEnsg');
-Route::post('/ajoutEnsg',[enseignantController::class,'ajouter'])->name('ajouterEnsg');
+Route::post('/ajoutEnsg',[enseignantsController::class,'ajouter'])->name('ajouterEnsg');
+Route::get('/ajoutSoutenance',[soutenanceController::class,'ouvrirformSoutenance'])->name('addSoutanance');
+Route::post('/ajouterSoutenance',[soutenanceController::class,'addS'])->name('addS');

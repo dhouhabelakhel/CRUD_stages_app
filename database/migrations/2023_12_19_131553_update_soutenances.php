@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etudiants', function (Blueprint $table) {
-            $table->increments('id')->primary();
-            $table->integer('NCE');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('classe');
-            $table->timestamps();
-
+        Schema::table('soutenances', function (Blueprint $table) {
+            $table->integer('student_id')->change();
+            $table->integer('enseg_id')->change();
         });
     }
 
@@ -27,7 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('etudiants');
-       
+        Schema::table('soutenances', function (Blueprint $table) {
+            //
+        });
     }
 };
