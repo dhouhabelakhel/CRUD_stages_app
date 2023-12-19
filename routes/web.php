@@ -28,3 +28,4 @@ Route::get('/ajouterEnsg',[enseignantController::class,'ouvrirAjoutEnsg'])->name
 Route::post('/ajoutEnsg',[enseignantsController::class,'ajouter'])->name('ajouterEnsg');
 Route::get('/ajoutSoutenance',[soutenanceController::class,'ouvrirformSoutenance'])->name('addSoutanance');
 Route::post('/ajouterSoutenance',[soutenanceController::class,'addS'])->name('addS');
+Route::get('/listeSoutenance',[soutenanceController::class,'getSoutenance'])->name('listeS');

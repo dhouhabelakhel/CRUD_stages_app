@@ -27,5 +27,10 @@ class soutenanceController extends Controller
 $soutenance=soutenance::create($data);
 if($data)
 echo"insertion valide";
+return view('listeSoutenance');
+  }
+  public function getSoutenance(){
+    $soutenances=soutenance::all();
+    return view('listeSoutenance',['soutenances'=>$soutenances]);
   }
 }
