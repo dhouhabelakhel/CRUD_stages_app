@@ -1,4 +1,4 @@
-
+@include('adminNavbar')
 <table class='styled-table'>
 
 @if($e)

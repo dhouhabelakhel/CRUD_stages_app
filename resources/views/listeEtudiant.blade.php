@@ -45,6 +45,7 @@
     font-size: 24px;
 }
 </style>
+@include('adminNavbar')
 <a  class='styled-link' href="{{route('add student')}}">Ajouter</a>
 
 

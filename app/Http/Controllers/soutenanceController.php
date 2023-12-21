@@ -27,10 +27,32 @@ class soutenanceController extends Controller
 $soutenance=soutenance::create($data);
 if($data)
 echo"insertion valide";
-return view('listeSoutenance');
-  }
+return redirect()->route('listeS');
+}
   public function getSoutenance(){
     $soutenances=soutenance::all();
     return view('listeSoutenance',['soutenances'=>$soutenances]);
   }
+public function supprimer(soutenance $soutenance){
+  $soutenance->delete();
+  return redirect()->route('listeS');
+}
+public function updateview(soutenance $soutenance){
+  return view('updateSoutenance',['soutenance'=>$soutenance]);
+}
+public function modifier(soutenance $soutenance,Request $request){
+  $data=$request->validate([
+    'numjury'=>'required',
+    'note'=>'required',
+    'datesoutenance'=>'required',
+    'student_id'=>'required',
+    'enseg_id'=>'required'
+  ]);
+ if( $soutenance->update($data))
+ echo"modification valide";
+return redirect()->route('listeS');
+echo"impossible de modifier";
+  
+}
+
 }

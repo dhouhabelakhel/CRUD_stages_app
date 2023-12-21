@@ -6,6 +6,7 @@
     <title>Création d'un étudiant</title>
 </head>
 <body>
+@include('adminNavbar')
     <h1>Création d'un étudiant</h1>
     <form action="{{ route('add') }}" method="post">
         @csrf
