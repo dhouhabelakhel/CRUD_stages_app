@@ -23,7 +23,7 @@ Route::prefix('admin')->group(function(){
         return view ('adminHomepage');
     })->name('adminhome');
     Route::prefix('Etudiant')->group(function(){
-        Route::get('/list',[etudiantcontroller::class,'listEtudiant'])->name('students');
+        Route::get('/',[etudiantcontroller::class,'listEtudiant'])->name('students');
         Route::get('/ajouter',[etudiantcontroller::class,'create'])->name('add student');
         Route::post('/ajouter',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
         Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
@@ -31,13 +31,18 @@ Route::prefix('admin')->group(function(){
         Route::delete('/supprimer/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');
     })->name('student');
    Route::prefix('Enseignant')->group(function(){
+        Route::get('/',[enseignantController::class,'afficher'])->name('teachers');
+        Route::get('/edit/{enseignant}',[enseignantController::class,'openUpdate'])->name('updateEnsg');
+        Route::put('/edit/{enseignant}',[enseignantController::class,'editEnsg'])->name('updateEnsgenaint');
+        Route::delete('/delete/{enseignant}',[enseignantController::class,'deleteEnsg'])->name('deleteEnsg');
+
         Route::get('/ajouter',[enseignantController::class,'ouvrirAjoutEnsg'])->name('addEnsg');
         Route::post('/ajouer',[enseignantController::class,'ajouter'])->name('ajouterEnsg');
    })->name('Enseignant');
   Route::prefix('Soutenance')->group(function(){
        Route::get('/ajout',[soutenanceController::class,'ouvrirformSoutenance'])->name('addSoutanance');
        Route::post('/ajout',[soutenanceController::class,'addS'])->name('addS');
-       Route::get('/liste',[soutenanceController::class,'getSoutenance'])->name('listeS');
+       Route::get('/',[soutenanceController::class,'getSoutenance'])->name('listeS');
        Route::delete('/supprimer/{soutenance}',[soutenanceController::class,'supprimer'])->name('deleteS');
        Route::put('/modifier/{soutenance}',[soutenanceController::class,'modifier'])->name('updateS');
        Route::get('/modifier/{soutenance}',[soutenanceController::class,'updateview'])->name('updateSoutenance');

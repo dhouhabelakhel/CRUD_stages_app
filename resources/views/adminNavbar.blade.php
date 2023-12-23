@@ -61,7 +61,7 @@
       <li class="service"><a >Services</a>
     <ul class="services">
       <li><a href="{{route('students')}}">Etudiants</a></li>
-      <li><a href="{{route('addEnsg')}}">Enseignants</a></li>
+      <li><a href="{{route('teachers')}}">Enseignants</a></li>
       <li><a href="{{route('listeS')}}">Soutenances</a></li>
     </ul>
     </li>
