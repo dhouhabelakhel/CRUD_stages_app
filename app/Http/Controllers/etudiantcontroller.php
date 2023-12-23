@@ -46,10 +46,7 @@ return redirect()->route('students');
            'classe' => 'required'
        ]);
    
-       $etudiant->update($data);
-   
-       session()->flash('success', 'Modification réussie!');
-   
+       $etudiant->update($data);   
        return redirect()->route('students');
    }
   public function supprimer(etudiant $etudiant){

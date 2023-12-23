@@ -22,19 +22,26 @@ Route::prefix('admin')->group(function(){
     Route::get('/',function(){
         return view ('adminHomepage');
     })->name('adminhome');
-    Route::get('/listEtudiant',[etudiantcontroller::class,'listEtudiant'])->name('students');
-    Route::get('/ajouterEtudiant',[etudiantcontroller::class,'create'])->name('add student');
-    Route::post('/ajouterEtudiant',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
-    Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
-    Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
-    Route::delete('/delete/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');
-    Route::get('/ajouterEnsg',[enseignantController::class,'ouvrirAjoutEnsg'])->name('addEnsg');
-    Route::post('/ajoutEnsg',[enseignantController::class,'ajouter'])->name('ajouterEnsg');
-    Route::get('/ajoutSoutenance',[soutenanceController::class,'ouvrirformSoutenance'])->name('addSoutanance');
-    Route::post('/ajouterSoutenance',[soutenanceController::class,'addS'])->name('addS');
-    Route::get('/listeSoutenance',[soutenanceController::class,'getSoutenance'])->name('listeS');
-    Route::delete('/supprimerS/{soutenance}',[soutenanceController::class,'supprimer'])->name('deleteS');
-    Route::put('/updateS/{soutenance}',[soutenanceController::class,'modifier'])->name('updateS');
-    Route::get('/updateSoutenance/{soutenance}',[soutenanceController::class,'updateview'])->name('updateSoutenance');
+    Route::prefix('Etudiant')->group(function(){
+        Route::get('/list',[etudiantcontroller::class,'listEtudiant'])->name('students');
+        Route::get('/ajouter',[etudiantcontroller::class,'create'])->name('add student');
+        Route::post('/ajouter',[etudiantcontroller::class,'ajouterEtudiant'])->name('add');
+        Route::get('/modifer/{etudiant}',[etudiantcontroller::class,'update_view'])->name('update');
+        Route::put('/modifier/{etudiant}',[etudiantcontroller::class,'modifier'])->name('updateE');
+        Route::delete('/supprimer/{etudiant}',[etudiantcontroller::class,'supprimer'])->name('delete');
+    })->name('student');
+   Route::prefix('Enseignant')->group(function(){
+        Route::get('/ajouter',[enseignantController::class,'ouvrirAjoutEnsg'])->name('addEnsg');
+        Route::post('/ajouer',[enseignantController::class,'ajouter'])->name('ajouterEnsg');
+   })->name('Enseignant');
+  Route::prefix('Soutenance')->group(function(){
+       Route::get('/ajout',[soutenanceController::class,'ouvrirformSoutenance'])->name('addSoutanance');
+       Route::post('/ajout',[soutenanceController::class,'addS'])->name('addS');
+       Route::get('/liste',[soutenanceController::class,'getSoutenance'])->name('listeS');
+       Route::delete('/supprimer/{soutenance}',[soutenanceController::class,'supprimer'])->name('deleteS');
+       Route::put('/modifier/{soutenance}',[soutenanceController::class,'modifier'])->name('updateS');
+       Route::get('/modifier/{soutenance}',[soutenanceController::class,'updateview'])->name('updateSoutenance');
+  })->name('soutenance');
+   
 });
 

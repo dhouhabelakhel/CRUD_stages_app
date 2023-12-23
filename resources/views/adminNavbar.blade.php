@@ -1,39 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-</head>
 <style>
+  nav{
+  
+  display: flex;
+    align-items: center;
+    font-weight: bold;
+    height: 5rem;
+  justify-content: space-around;
+    background: rgb(67, 91, 103);
+    border-top: 3px solid #FFC107;
+  color:white;
+    inset:0%
+  }
+ .sideitems{
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+ }
+ li{
+  margin-top:5%;
+  padding:5%;
+  list-style:none
+ }
+ a {
+  color:white;
+  text-decoration: none;
+ }
+ .services {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    padding-top:1%
+  }
+   .services a{
+    text-decoration: none;
+    color: rgb(67, 91, 103);
 
+  }
+  .service:hover .services {
+    display: flex;
+  }
+  ul li{
+    cursor:pointer;
+  }
+  img{
+    margin-bottom:2%
+  }
 </style>
-<body>
+<header>
+<img src="{{ asset('isetlogo.jpg') }}" alt="Description de l'image">
 
-<nav class="navbar">
-  <a class="navbar-brand" href="#">Mon Site</a>
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="{{ route('adminhome') }}">Accueil</a>
+<nav>
+  <div>
+<h1>Institut Supérieur des Etudes Technologiques de Charguia</h1>
+  </div>
+  <div >
+    <ul class="sideitems">
+      <li><a href="{{route('adminhome')}}">Acceuil</a></li>
+      <li class="service"><a >Services</a>
+    <ul class="services">
+      <li><a href="{{route('students')}}">Etudiants</a></li>
+      <li><a href="{{route('addEnsg')}}">Enseignants</a></li>
+      <li><a href="{{route('listeS')}}">Soutenances</a></li>
+    </ul>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">À propos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link menu-container">Services
-        <ul class="menubar">
-          <li><a href="{{ route('students') }}">Etudiants</a></li>
-          <li><a href="{{ route('addEnsg') }}">Enseignants</a></li>
-          <li><a href="{{ route('listeS') }}">Soutenances</a></li>
-        </ul>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Contact</a>
-    </li>
-  </ul>
+      <li><a >About</a></li>
+      <li><a >Contact</a></li>
+    </ul>
+  </div>
 </nav>
-
-
-</body>
-</html>
+</header>
