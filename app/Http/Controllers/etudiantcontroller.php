@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\etudiant;
-
+use App\Http\Requests\studentRequest;
 class etudiantcontroller extends Controller
 {
     public function getEtudiant(){
@@ -18,13 +18,8 @@ class etudiantcontroller extends Controller
     public function create(){
         return view('/Etudiants/ajouterEtudiant');
     }
-    public function ajouterEtudiant(Request $request){
-        $data=$request->validate([
-            'NCE'=>'required',
-        'nom'=>'required',
-        'prenom'=>'required',
-        'classe'=>'required'
-        ]);
+    public function ajouterEtudiant(studentRequest $request){
+        $data=$request->validated();
         $nouvEtudiant=etudiant::create($data);
         if($nouvEtudiant){
             echo"Ajout avec succes!";
@@ -37,15 +32,9 @@ return redirect()->route('students');
    public function update_view(etudiant $etudiant){
     return view('/Etudiants/modifierEtudian',['e'=>$etudiant]);
    }
-   public function modifier(etudiant $etudiant, Request $request)
+   public function modifier(etudiant $etudiant,  studentRequest $request)
    {
-       $data = $request->validate([
-           'NCE' => 'required',
-           'nom' => 'required',
-           'prenom' => 'required',
-           'classe' => 'required'
-       ]);
-   
+       $data = $request->validated();
        $etudiant->update($data);   
        return redirect()->route('students');
    }

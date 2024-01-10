@@ -6,8 +6,17 @@
 @csrf
 @method('put')
 <input type="text" value="{{$soutenance->numjury}}" name="numjury">
+@error('numjury')
+{{$message}}
+@enderror
 <input type="date" value="{{$soutenance->datesoutenance}}" name="datesoutenance">
+@error('datesoutenance')
+{{$message}}
+@enderror
 <input type="text" value="{{$soutenance->note}}" name="note">
+@error('note')
+{{$message}}
+@enderror
 <select name="student_id" >
     @foreach(\App\Models\Etudiant::all() as $student)
     <option value="{{$student->id}}" {{ $student->id == $soutenance->student_id ? 'selected' : '' }}>{{$student->nom}} {{$student->prenom}}</option>

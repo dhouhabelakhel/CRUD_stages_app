@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\soutenanceRequest;
 use App\Models\etudiant;
 use App\Models\enseignant;
 use App\Models\soutenance;
@@ -16,14 +17,8 @@ class soutenanceController extends Controller
 
     return view('/Soutenances/ajoutersoutenance',['etudiants'=>$etudiant,'ensg'=>$ensg]);
   }
-  public function addS(Request $request){
-   $data= $request->validate([
-'numjury'=>'required',
-'note'=>'required',
-'datesoutenance'=>'required',
-'student_id'=>'required',
-'enseg_id'=>'required'
-    ]);
+  public function addS(soutenanceRequest $request){
+   $data= $request->validated();
 
 if($soutenance=soutenance::create($data))
 echo"insertion valide";
@@ -40,14 +35,8 @@ public function supprimer(soutenance $soutenance){
 public function updateview(soutenance $soutenance){
   return view('/Soutenances/updateSoutenance',['soutenance'=>$soutenance]);
 }
-public function modifier(soutenance $soutenance,Request $request){
-  $data=$request->validate([
-    'numjury'=>'required',
-    'note'=>'required',
-    'datesoutenance'=>'required',
-    'student_id'=>'required',
-    'enseg_id'=>'required'
-  ]);
+public function modifier(soutenance $soutenance,soutenanceRequest $request){
+  $data=$request->validated();
  if( $soutenance->update($data))
  echo"modification valide";
 return redirect()->route('listeS');

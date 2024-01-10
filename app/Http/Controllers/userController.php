@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\loginRequest;
+
 class userController extends Controller
 {
   public function  openAddview(){
@@ -28,6 +29,9 @@ class userController extends Controller
     
    
     $request->session()->regenerate();
+   
+
+   
     return redirect()->route('adminhome');
    }
    return to_route('auth')->withErrors([
