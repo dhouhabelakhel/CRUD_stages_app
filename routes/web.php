@@ -19,6 +19,8 @@ use App\Http\Controllers\userController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('login',[userController::class,'authentifier'])->name('auth');
+
 Route::prefix('admin')->group(function(){
     Route::get('/',function(){
         return view ('adminHomepage');
