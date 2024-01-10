@@ -28,6 +28,9 @@ justify-content:space-between
     }
 </style>
 @include('adminNavbar')
+<div>
+    <h1><a href="{{route ('addAdmin')}}">Ajouter admin</a> </h1>
+</div>
 <div class="data">
     <div class="item">
         <i class="fas fa-graduation-cap"></i>

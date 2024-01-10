@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\etudiantcontroller;
 use App\Http\Controllers\enseignantController;
 use App\Http\Controllers\soutenanceController;
+use App\Http\Controllers\userController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +23,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/',function(){
         return view ('adminHomepage');
     })->name('adminhome');
+    Route::get('ajouterAdmin',[userController::class,'openAddview'])->name('addAdmin');
+    Route::post('ajouterAdmin',[userController::class,'addAdmin'])->name('addAdmin');
     Route::prefix('Etudiant')->group(function(){
         Route::get('/',[etudiantcontroller::class,'listEtudiant'])->name('students');
         Route::get('/ajouter',[etudiantcontroller::class,'create'])->name('add student');
@@ -47,6 +50,6 @@ Route::prefix('admin')->group(function(){
        Route::put('/modifier/{soutenance}',[soutenanceController::class,'modifier'])->name('updateS');
        Route::get('/modifier/{soutenance}',[soutenanceController::class,'updateview'])->name('updateSoutenance');
   })->name('soutenance');
-   
+
 });
 

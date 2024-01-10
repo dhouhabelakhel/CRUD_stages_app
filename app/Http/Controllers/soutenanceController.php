@@ -14,7 +14,7 @@ class soutenanceController extends Controller
     $etudiant=etudiant::all();
     $ensg=enseignant::all();
 
-    return view('ajoutersoutenance',['etudiants'=>$etudiant,'ensg'=>$ensg]);
+    return view('/Soutenances/ajoutersoutenance',['etudiants'=>$etudiant,'ensg'=>$ensg]);
   }
   public function addS(Request $request){
    $data= $request->validate([
@@ -24,21 +24,21 @@ class soutenanceController extends Controller
 'student_id'=>'required',
 'enseg_id'=>'required'
     ]);
-$soutenance=soutenance::create($data);
-if($data)
+
+if($soutenance=soutenance::create($data))
 echo"insertion valide";
 return redirect()->route('listeS');
 }
   public function getSoutenance(){
     $soutenances=soutenance::all();
-    return view('listeSoutenance',['soutenances'=>$soutenances]);
+    return view('/Soutenances/listeSoutenance',['soutenances'=>$soutenances]);
   }
 public function supprimer(soutenance $soutenance){
   $soutenance->delete();
   return redirect()->route('listeS');
 }
 public function updateview(soutenance $soutenance){
-  return view('updateSoutenance',['soutenance'=>$soutenance]);
+  return view('/Soutenances/updateSoutenance',['soutenance'=>$soutenance]);
 }
 public function modifier(soutenance $soutenance,Request $request){
   $data=$request->validate([

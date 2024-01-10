@@ -8,7 +8,7 @@
 </head>
 <body>
 @include('adminNavbar')
-<a href="{{route('addSoutanance')}}">Ajouter</a>
+<a href="{{route('addSoutanance')}}" style="color:black">Ajouter</a>
 <div class="container">
 
   <h2>Soutenances</h2>
@@ -20,7 +20,7 @@
         <th>Note</th>
         <th>Enseiganant</th>
         <th>Etudiant</th>
-<th colspan="2">Actions</th>
+        <th colspan="2" >Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
         <td> {{App\Models\etudiant::find($S->student_id)->nom}}
         {{App\Models\etudiant::find($S->student_id)->prenom}}
         </td>
-        <td><a href="{{route('updateSoutenance',['soutenance'=>$S])}}">Modifier</a></td>
+        <td><a href="{{route('updateSoutenance',['soutenance'=>$S])}}" style="color:black">Modifier</a></td>
         <td>
         <form action="{{route('deleteS',['soutenance'=>$S])}}" method="post">
           @csrf

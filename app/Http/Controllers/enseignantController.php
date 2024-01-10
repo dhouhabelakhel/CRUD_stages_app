@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\enseignant;
+use App\Models\soutenance;
 use Illuminate\Http\Request;
 
 class enseignantController extends Controller
 {
    public function ouvrirAjoutEnsg(){
-    return view('ajouterEnseignant');
+    return view('/Enseignants/ajouterEnseignant');
    }
    public function ajouter(Request $request){
     $data=$request->validate([
@@ -16,19 +17,19 @@ class enseignantController extends Controller
 'prenom_ensg'=>'required',
     ]
     );
-    $nouvEnseignant=enseignant::create($data);
-    if($nouvEnseignant){
-        echo"Ajout avec succes!";
-return redirect()->route('addEnsg');
+   
+    if( $nouvEnseignant=enseignant::create($data)){
+      
+return redirect()->route('teachers');
     }
 
 else echo"ajout non efectuer!!";
    }
    public function afficher(){
-    return view('listeEnseignant',['ensg'=>enseignant::all()]);
+    return view('/Enseignants/listeEnseignant',['ensg'=>enseignant::all()]);
    }
    public function openUpdate(enseignant $enseignant){
-    return view ('modifierEnseignant',['ensg'=>$enseignant]);
+    return view ('/Enseignants/modifierEnseignant',['ensg'=>$enseignant]);
    }
    public function editEnsg(Request $request,enseignant $enseignant){
     $data=$request->validate([
@@ -40,6 +41,6 @@ else echo"ajout non efectuer!!";
    }
    public function deleteEnsg(enseignant $enseignant){
     $enseignant->delete();
-    return redirect()->route('teachers');
+ return redirect()->route('teachers');
    }
 }

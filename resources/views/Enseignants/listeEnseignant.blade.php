@@ -13,7 +13,9 @@
 </style>
 <body>
 @include('adminNavbar')
-<a href="{{route('addEnsg')}}">Ajouter</a>
+
+<div >
+<a href="{{route('addEnsg')}}" style="color:black">Ajouter</a>
 <div class="container">
 
   <h2>Enseignant</h2>
@@ -51,7 +53,7 @@
     </tbody>
   </table>
 </div>
-
+</div>
 
 </body>
 </html>

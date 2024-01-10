@@ -12,11 +12,11 @@ class etudiantcontroller extends Controller
     }
     public function listEtudiant(){
         $etudiant=etudiant::all();
-        return view('listeEtudiant',['etudiant'=>$etudiant]);
+        return view('/Etudiants/listeEtudiant',['etudiant'=>$etudiant]);
 
     }
     public function create(){
-        return view('ajouterEtudiant');
+        return view('/Etudiants/ajouterEtudiant');
     }
     public function ajouterEtudiant(Request $request){
         $data=$request->validate([
@@ -35,7 +35,7 @@ return redirect()->route('students');
     }
 
    public function update_view(etudiant $etudiant){
-    return view('modifierEtudian',['e'=>$etudiant]);
+    return view('/Etudiants/modifierEtudian',['e'=>$etudiant]);
    }
    public function modifier(etudiant $etudiant, Request $request)
    {
