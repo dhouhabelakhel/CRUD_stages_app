@@ -18,15 +18,16 @@ use App\Http\Controllers\soutenanceController;
 use App\Http\Controllers\userController;
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 Route::post('login',[userController::class,'authentifier'])->name('auth');
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/',function(){
         return view ('adminHomepage');
     })->name('adminhome');
     Route::get('ajouterAdmin',[userController::class,'openAddview'])->name('addAdmin');
     Route::post('ajouterAdmin',[userController::class,'addAdmin'])->name('addAdmin');
+    Route::delete('logout',[userController::class,'logout'])->name('logout');
     Route::prefix('Etudiant')->group(function(){
         Route::get('/',[etudiantcontroller::class,'listEtudiant'])->name('students');
         Route::get('/ajouter',[etudiantcontroller::class,'create'])->name('add student');

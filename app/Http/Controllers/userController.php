@@ -38,4 +38,8 @@ class userController extends Controller
 "email"=>"email invalide"
    ]);
   }
+  public function logout(){
+    Auth::logout();
+    return redirect()->route('index');
+  }
 }

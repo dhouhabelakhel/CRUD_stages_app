@@ -50,7 +50,18 @@
 </style>
 <header>
 <img src="{{ asset('isetlogo.jpg') }}" alt="Description de l'image">
+<div>
 
+  @auth
+  {{\Illuminate\Support\Facades\Auth::user()->name}}
+  <form action="{{route('logout') }}"method="post">
+    @csrf
+    @method('delete')
+    <input type="submit" value="deconnecter">
+  </form>
+  @endauth
+ 
+</div>
 <nav>
   <div>
 <h1>Institut Supérieur des Etudes Technologiques de Charguia</h1>
