@@ -19,29 +19,42 @@ class etudiantcontroller extends Controller
         return view('/Etudiants/ajouterEtudiant');
     }
     public function ajouterEtudiant(studentRequest $request){
-        $data=$request->validated();
-        $nouvEtudiant=etudiant::create($data);
-        if($nouvEtudiant){
-            echo"Ajout avec succes!";
-return redirect()->route('students');
+
+
+            try {
+                $data=$request->validated();
+                $nouvEtudiant=etudiant::create($data);
+                if($nouvEtudiant){
+                return redirect()->route('students');}
+                else return redirect()->back()->withErrors($validator)->withInput();
+
+            } catch (\Throwable $th) {
+                 return redirect()->back()->withErrors(['constraint'=>'NCE existe déjà'])->withInput();
+
+            }
         }
 
-    else echo"ajout non efectuer!!";
-    }
 
    public function update_view(etudiant $etudiant){
     return view('/Etudiants/modifierEtudian',['e'=>$etudiant]);
    }
    public function modifier(etudiant $etudiant,  studentRequest $request)
    {
-       $data = $request->validated();
-       $etudiant->update($data);   
-       return redirect()->route('students');
+    try {
+        $data = $request->validated();
+        $etudiant->update($data);
+        if($etudiant)
+        return redirect()->route('students');
+    else return redirect()->back()->withErrors($validator)->withInput();
+    } catch (\Throwable $th) {
+       return redirect()->back()->withErrors(['constraint'=>'NCEexiste déjà!'])->withInput();
+    }
+
    }
   public function supprimer(etudiant $etudiant){
 $etudiant->delete();
 return redirect()->route('students');
 
   }
-   
+
 }

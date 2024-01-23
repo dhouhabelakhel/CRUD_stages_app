@@ -9,7 +9,7 @@ use App\Models\enseignant;
 use App\Models\soutenance;
 class soutenanceController extends Controller
 {
-  
+
 
   public function  ouvrirformSoutenance(){
     $etudiant=etudiant::all();
@@ -18,11 +18,14 @@ class soutenanceController extends Controller
     return view('/Soutenances/ajoutersoutenance',['etudiants'=>$etudiant,'ensg'=>$ensg]);
   }
   public function addS(soutenanceRequest $request){
-   $data= $request->validated();
-
+    try {
+        $data= $request->validated();
 if($soutenance=soutenance::create($data))
-echo"insertion valide";
 return redirect()->route('listeS');
+    } catch (\Throwable $th) {
+       return redirect()->back()->withErrors(['constraint'=>'ajout non valide'])->withInput();
+    }
+
 }
   public function getSoutenance(){
     $soutenances=soutenance::all();
@@ -36,12 +39,17 @@ public function updateview(soutenance $soutenance){
   return view('/Soutenances/updateSoutenance',['soutenance'=>$soutenance]);
 }
 public function modifier(soutenance $soutenance,soutenanceRequest $request){
-  $data=$request->validated();
- if( $soutenance->update($data))
- echo"modification valide";
-return redirect()->route('listeS');
-echo"impossible de modifier";
-  
+    try {
+        $data=$request->validated();
+        if( $soutenance->update($data))
+
+       return redirect()->route('listeS');    }
+        catch (\Throwable $th) {
+       return redirect()->back()->withErrors(['constraint'=>'ajout non valide'])->withInput();
+    }
+
+
+
 }
 
 }

@@ -1,4 +1,3 @@
-@include('adminNavbar')
 <div>
 <form action="{{route ('addAdmin')}}" method="post">
         @csrf

@@ -11,14 +11,19 @@ class enseignantController extends Controller
     return view('/Enseignants/ajouterEnseignant');
    }
    public function ajouter(teacherRequest $request){
-    $data=$request->validated();
-   
+    try {
+        $data=$request->validated();
+
     if( $nouvEnseignant=enseignant::create($data)){
-      
+
 return redirect()->route('teachers');
     }
 
-else echo"ajout non efectuer!!";
+else return redirect()->back()->withErrors($validator)->withInput();
+    } catch (\Throwable $th) {
+       return redirect()->back()->withErrors(['constraint'=>'Matricule existe déjà!'])->withInput();
+    }
+
    }
    public function afficher(){
     return view('/Enseignants/listeEnseignant',['ensg'=>enseignant::all()]);
@@ -27,8 +32,14 @@ else echo"ajout non efectuer!!";
     return view ('/Enseignants/modifierEnseignant',['ensg'=>$enseignant]);
    }
    public function editEnsg(teacherRequest $request,enseignant $enseignant){
-    $data=$request->validated();
+    try {
+        $data=$request->validated();
     $enseignant->update($data);
+    return redirect()->route('teachers');
+    } catch (\Throwable $th) {
+        return redirect()->back()->withErrors(['constraint'=>'matricule existe déjà!'])->withInput();
+    }
+
    }
    public function deleteEnsg(enseignant $enseignant){
     $enseignant->delete();

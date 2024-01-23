@@ -26,12 +26,7 @@ class userController extends Controller
   public function authentifier(loginRequest $request){
     $data=$request->validated();
    if( Auth::attempt($data,$remember=true)){
-    
-   
     $request->session()->regenerate();
-   
-
-   
     return redirect()->route('adminhome');
    }
    return to_route('auth')->withErrors([

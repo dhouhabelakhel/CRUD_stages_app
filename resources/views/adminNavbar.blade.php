@@ -1,6 +1,7 @@
 <style>
+
   nav{
-  
+    overflow: hidden;
   display: flex;
     align-items: center;
     font-weight: bold;
@@ -19,7 +20,7 @@
  }
  li{
   margin-top:5%;
-  padding:5%;
+  padding:10%;
   list-style:none
  }
  a {
@@ -52,14 +53,7 @@
 <img src="{{ asset('isetlogo.jpg') }}" alt="Description de l'image">
 <div>
 
-  @auth
-  {{\Illuminate\Support\Facades\Auth::user()->name}}
-  <form action="{{route('logout') }}"method="post">
-    @csrf
-    @method('delete')
-    <input type="submit" value="deconnecter">
-  </form>
-  @endauth
+ 
  
 </div>
 <nav>
@@ -76,9 +70,10 @@
       <li><a href="{{route('listeS')}}">Soutenances</a></li>
     </ul>
     </li>
-      <li><a >About</a></li>
-      <li><a >Contact</a></li>
+      <li><a >A propos</a></li>
+      <li><a href="{{route('profile')}}">Profile</a></li>
     </ul>
   </div>
 </nav>
+
 </header>
