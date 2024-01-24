@@ -47,13 +47,13 @@ class etudiantcontroller extends Controller
         return redirect()->route('students');
     else return redirect()->back()->withErrors($validator)->withInput();
     } catch (\Throwable $th) {
-       return redirect()->back()->withErrors(['constraint'=>'NCEexiste déjà!'])->withInput();
+       return redirect()->back()->withErrors(['constraint'=>'NCE existe déjà!'])->withInput();
     }
 
    }
   public function supprimer(etudiant $etudiant){
 $etudiant->delete();
-return redirect()->route('students');
+return redirect()->back();
 
   }
 

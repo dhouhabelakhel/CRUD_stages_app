@@ -43,18 +43,32 @@
     <div class="form-group">
         <label for="enseg_id">Enseignant</label>
     <select name="enseg_id" class="form-control">
+        <option></option>
         @foreach($ensg as $ens)
         <option  value="{{$ens->id}}">{{$ens->nom_ensg}} {{$ens->prenom_ensg}}</option>
         @endforeach
     </select>
+    @error('enseg_id')
+    <small class="text-danger">
+        {{$message}}
+    </small>
+
+    @enderror
 </div>
 <div class="form-group">
     <label for="student_id">Etudiant</label>
     <select name="student_id" class="form-control">
+        <option value="" ></option>
         @foreach($etudiants as $e)
         <option value="{{$e->id}}">{{$e->nom}} {{$e->prenom}}</option>
         @endforeach
     </select>
+    @error('student_id')
+    <small class="text-danger">
+        {{$message}}
+    </small>
+
+    @enderror
 </div>
    <input type="submit" value="ajouter" class="btn btn-primary">
    </form>

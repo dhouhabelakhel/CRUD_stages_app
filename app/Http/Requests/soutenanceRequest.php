@@ -20,15 +20,16 @@ class soutenanceRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-   
+
     public function rules(): array
     {
-        
+
         return [
             'numjury'=>"required|min:1",
 'note'=>"required|numeric|between:0,99.99 ",
 'datesoutenance'=>"required|date|after_or_equal:".Carbon::today()->toDateString(),
-
+'student_id'=>'required',
+'enseg_id'=>'required'
         ];
     }
 }

@@ -69,20 +69,34 @@
     <th>Etudiant</th>
     <td>
         <select name="student_id" class="form-control" >
+            <option ></option>
             @foreach(\App\Models\Etudiant::all() as $student)
             <option value="{{$student->id}}" {{ $student->id == $soutenance->student_id ? 'selected' : '' }}>{{$student->nom}} {{$student->prenom}}</option>
             @endforeach
         </select>
+        @error('student_id')
+        <small class="text-danger">
+            {{$message}}
+        </small>
+
+        @enderror
     </td>
 </tr>
 <tr>
     <th>Enseignant</th>
     <td>
         <select name="enseg_id" class="form-control" >
+            <option value=""></option>
             @foreach(\App\Models\enseignant::all() as $ensg)
             <option value="{{$ensg->id}}" {{ $ensg->id == $soutenance->enseg_id ? 'selected' : '' }}>{{$ensg->nom_ensg}} {{$ensg->prenom_ensg}}</option>
             @endforeach
         </select>
+        @error('enseg_id')
+        <small class="text-danger">
+            {{$message}}
+        </small>
+
+        @enderror
     </td>
 </tr>
 <tr>

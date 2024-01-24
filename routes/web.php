@@ -28,12 +28,17 @@ Route::prefix('adminDashboard')->middleware('auth')->group(function(){
     Route::get('profil',function(){
         return view ('components/adminprofil');
     })->name('profile');
+    Route::get('modifer', function () {return view('modifierprofil');})->name('modifierprofil');
     Route::prefix('admins')->controller(userController::class)->group(function(){
-        Route::get('ajouterAdmin',[userController::class,'openAddview'])->name('addAdmin');
-        Route::post('ajouterAdmin',[userController::class,'addAdmin'])->name('addAdmin');
-
+        Route::get('/','getUsers')->name('listAdmins');
+        Route::put('modifier','modifier')->name('modifierUser');
+        Route::get('modifier/{admin}','interfacemodifierAdmin')->name('modifierAdmin');
+        Route::put('/{admin}','modifierAdmin')->name('modifierAdminInfos');
+        Route::get('ajouterAdmin','openAddview')->name('addAdmin');
+        Route::post('ajouterAdmin','addAdmin')->name('addAdmin');
+        Route::delete('/{admin}','delete')->name('deleteAdmin');
     })->name("admins");
- 
+
     Route::delete('logout',[userController::class,'logout'])->name('logout');
     Route::prefix('Etudiant')->controller(etudiantcontroller::class)->group(function(){
         Route::get('/','listEtudiant')->name('students');

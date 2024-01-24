@@ -24,7 +24,7 @@ class adminsRequest extends FormRequest
         return [
             'name'=>"required|min:5",
             'email'=>"required|email",
-            'password'=>"required|'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',",
+            'password' => 'required',
         ];
     }
 }

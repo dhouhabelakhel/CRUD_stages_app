@@ -1,30 +1,19 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-body, h1, h2, h3, p, ul, li {
-    margin: 0;
-    padding: 0;
-}
 
-.container {
-    background-color: #f5f5f5;
-    padding: 10%;
-    border: 1px solid #ccc;
-    border-radius: 2%;
-    margin-top: 10%;
-    width: 50%;
-    margin-left: 17%;
-}
 
 table {
-    width: 100%;
+    width: 50%;
+
 }
 
 td {
-    padding: 5%;
+    padding: 2%;
 }
 
 tr {
-    margin: 2%;
+    margin: 1%;
 }
 
 p {
@@ -35,21 +24,10 @@ p {
     margin-top: 10px;
 }
 
-.logout-btn {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    height:150%;
-    width:150%;
-    margin-left:60%;
-}
 
 </style>
 @include('adminNavbar')
-<div class="container" >
+<div class="container-fluid" >
     @auth
          <table>
             <tr>
@@ -61,14 +39,19 @@ p {
                 <td><p>{{ \Illuminate\Support\Facades\Auth::user()->email }}</p></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     <form action="{{ route('logout') }}" method="post" class="logout-form">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="Déconnecter" class="logout-btn">
+                        <input type="submit" value="Déconnecter" class="btn btn-primary">
                     </form>
+                    <a href="{{route('modifierprofil')}}">
+                        <input type="button" value="Modifier Profile" class="btn btn-secondary">
+                    </a>
+
                 </td>
             </tr>
+
         </table>
     @endauth
 </div>

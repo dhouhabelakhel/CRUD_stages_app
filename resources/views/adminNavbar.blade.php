@@ -10,7 +10,8 @@
     background: rgb(67, 91, 103);
     border-top: 3px solid #FFC107;
   color:white;
-    inset:0%
+    inset:0%;
+    margin-bottom: 5%
   }
  .sideitems{
   display: flex;
@@ -53,8 +54,8 @@
 <img src="{{ asset('isetlogo.jpg') }}" alt="Description de l'image">
 <div>
 
- 
- 
+
+
 </div>
 <nav>
   <div>
@@ -70,7 +71,7 @@
       <li><a href="{{route('listeS')}}">Soutenances</a></li>
     </ul>
     </li>
-      <li><a >A propos</a></li>
+      <li><a href="{{route('listAdmins')}}">Admin</a></li>
       <li><a href="{{route('profile')}}">Profile</a></li>
     </ul>
   </div>
